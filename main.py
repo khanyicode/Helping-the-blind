@@ -1,4 +1,7 @@
 import tkinter as tk
+import pyttsx3
+
+engine = pyttsx3.init()
 
 root = tk.Tk()
 root.title("Traffic Light Simulation")
@@ -20,18 +23,29 @@ def change_light():
     
     if current_color_red == "gray" and current_color_yellow == "gray" and current_color_green == "gray":
         canvas.itemconfig(red_light, fill="red")
+        engine.say("Red")
+        engine.runAndWait()
         canvas.itemconfig(yellow_light, fill="gray")
         canvas.itemconfig(green_light, fill="gray")
+        
     elif current_color_red == "red":
+        engine.say("Yellow")
+        engine.runAndWait()
         canvas.itemconfig(red_light, fill="gray")
         canvas.itemconfig(yellow_light, fill="yellow")
         canvas.itemconfig(green_light, fill="gray")
+        
     elif current_color_yellow == "yellow":
+        engine.say("Green")
+        engine.runAndWait()
         canvas.itemconfig(red_light, fill="gray")
         canvas.itemconfig(yellow_light, fill="gray")
         canvas.itemconfig(green_light, fill="green")
+        
     elif current_color_green == "green":
-        canvas.itemconfig(red_light, fill="gray")
+        engine.say("Red")
+        engine.runAndWait()
+        canvas.itemconfig(red_light, fill="red")
         canvas.itemconfig(yellow_light, fill="gray")
         canvas.itemconfig(green_light, fill="gray")
     
